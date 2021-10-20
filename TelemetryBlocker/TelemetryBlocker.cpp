@@ -3,8 +3,10 @@
 #include "Endpoints.h"
 using namespace std;
 
+// Constants
 const string HOSTS = "C:\\Windows\\System32\\drivers\\etc\\hosts";
 
+// Methods
 void appendFile(string file, string toAppend)
 {
     ofstream outfile;
@@ -35,6 +37,7 @@ void blockMiscTrackersAndAds() {
     cout << "\nBlocked Misc ads & Trackers\n";
 }
 
+// Main loop
 int main()
 {
     while (true) {
