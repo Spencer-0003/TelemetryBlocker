@@ -1,7 +1,7 @@
 # TelemetryBlocker
 Block Microsoft and Google Telemetry on your pc.
 
-## This is only compatible for Windows
+## This is only compatible with Windows
 ### Notice
 This MUST be ran as administrator as it edits your hosts file.
 
