@@ -3,7 +3,7 @@
 #include "Endpoints.h"
 using namespace std;
 
-const char* HOSTS = "C:\\Windows\\System32\\drivers\\etc\\hosts";
+const string HOSTS = "C:\\Windows\\System32\\drivers\\etc\\hosts";
 
 void appendFile(string file, string toAppend)
 {
