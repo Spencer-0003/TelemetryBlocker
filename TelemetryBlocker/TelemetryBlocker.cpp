@@ -1,10 +1,12 @@
 #include <iostream>
 #include <fstream>
+#include <experimental/filesystem>
 #include "Endpoints.h"
 using namespace std;
 
 // Constants
-const string HOSTS = "C:\\Windows\\System32\\drivers\\etc\\hosts";
+const string WINDOWS_HOSTS = "C:\\Windows\\System32\\drivers\\etc\\hosts";
+const string LINUX_HOSTS = "/etc/hosts";
 
 // Methods
 void appendFile(string file, string toAppend)
@@ -15,7 +17,7 @@ void appendFile(string file, string toAppend)
     outfile.close();
 }
 
-void blockMicrosoftTelemetry()
+void blockMicrosoftTelemetry(string HOSTS)
 {
     appendFile(HOSTS, "\n# TelemetryBlocker (Block Microsoft Telemetry)\n");
     for (int i = 0; i < MicrosoftTelemetryEndpoints.size(); i++)
@@ -23,14 +25,14 @@ void blockMicrosoftTelemetry()
     cout << "\nBlocked Windows Telemetry\n\n";
 }
 
-void blockGoogleTelemetry() {
+void blockGoogleTelemetry(string HOSTS) {
     appendFile(HOSTS, "\n# TelemetryBlocker (Ads & Tracking)\n");
     for (int i = 0; i < GoogleTrackingEndpoints.size(); i++)
         appendFile(HOSTS, "0.0.0.0 " + GoogleTrackingEndpoints[i] + "\n");
     cout << "\nBlocked Ads & Tracking Telemetry\n\n";
 }
 
-void blockMiscTrackersAndAds() {
+void blockMiscTrackersAndAds(string HOSTS) {
     appendFile(HOSTS, "\n# TelemetryBlocker (Misc Ads & Tracking)\n");
     for (int i = 0; i < MiscAdsAndTrackingEndpoints.size(); i++)
         appendFile(HOSTS, "0.0.0.0 " + MiscAdsAndTrackingEndpoints[i] + "\n");
@@ -40,6 +42,7 @@ void blockMiscTrackersAndAds() {
 // Main loop
 int main()
 {
+    bool isWindows = experimental::filesystem::exists(WINDOWS_HOSTS); // The bad operating system
     while (true) {
         int option;
         cout << "TelemetryBlocker (MAKE SURE YOU'RE RUNNING AS ADMINISTRATOR)\n\n1. Block Telemetry (Windows)\n2. Block Google Telemetry (Ads & Tracking)\n3. Block Misc Ads & Trackers \n\nChoose an option: ";
@@ -50,13 +53,13 @@ int main()
 
         switch (option) {
         case 1:
-            blockMicrosoftTelemetry();
+            blockMicrosoftTelemetry(isWindows ? WINDOWS_HOSTS : LINUX_HOSTS);
             break;
         case 2:
-            blockGoogleTelemetry();
+            blockGoogleTelemetry(isWindows ? WINDOWS_HOSTS : LINUX_HOSTS);
             break;
         case 3:
-            blockMiscTrackersAndAds();
+            blockMiscTrackersAndAds(isWindows ? WINDOWS_HOSTS : LINUX_HOSTS);
             break;
         default:
             cout << "Invalid option.\n\n";
