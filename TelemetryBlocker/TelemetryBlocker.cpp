@@ -1,3 +1,4 @@
+#define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING // Idk how to upgrade the C++ version :sadge:
 #include <iostream>
 #include <fstream>
 #include <experimental/filesystem>
