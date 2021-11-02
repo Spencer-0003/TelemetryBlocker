@@ -1,7 +1,6 @@
-#define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING // Idk how to upgrade the C++ version :sadge:
 #include <iostream>
+#include <filesystem>
 #include <fstream>
-#include <experimental/filesystem>
 #include "Endpoints.h"
 using namespace std;
 
@@ -43,7 +42,7 @@ void blockMiscTrackersAndAds(string HOSTS) {
 // Main loop
 int main()
 {
-    bool isWindows = experimental::filesystem::exists(WINDOWS_HOSTS); // The bad operating system
+    bool isWindows = filesystem::exists(WINDOWS_HOSTS); // The bad operating system
     while (true) {
         int option;
         cout << "TelemetryBlocker (MAKE SURE YOU'RE RUNNING AS ADMINISTRATOR)\n\n1. Block Telemetry (Windows)\n2. Block Google Telemetry (Ads & Tracking)\n3. Block Misc Ads & Trackers \n\nChoose an option: ";
