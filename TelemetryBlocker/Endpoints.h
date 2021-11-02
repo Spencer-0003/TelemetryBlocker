@@ -156,6 +156,7 @@ std::vector<std::string> MiscAdsAndTrackingEndpoints{
 	"euasync01.admantx.com",
 	"eus.rubiconproject.com",
 	"events.launchdarkly.com",
+	"events.reddit.com",
 	"experience.tinypass.com",
 	"fastlane.rubiconproject.com",
 	"fev.fyber.com",
