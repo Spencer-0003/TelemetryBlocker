@@ -17,11 +17,18 @@ void appendFile(string file, string toAppend)
     outfile.close();
 }
 
-void blockMicrosoftTelemetry(string HOSTS)
+void blockMicrosoftTelemetry(string HOSTS, bool windows)
 {
     appendFile(HOSTS, "\n# TelemetryBlocker (Block Microsoft Telemetry)\n");
     for (int i = 0; i < MicrosoftTelemetryEndpoints.size(); i++)
         appendFile(HOSTS, "0.0.0.0 " + MicrosoftTelemetryEndpoints[i] + "\n");
+
+    if (windows) {
+        system("sc config \"DiagTrack\" start=disabled");
+        system("sc config \"diagnosticshub.standardcollector.service\" start=disabled");
+        cout << "\nDisabled tracking services";
+    }
+
     cout << "\nBlocked Windows Telemetry\n\n";
 }
 
@@ -45,7 +52,7 @@ int main()
     bool isWindows = filesystem::exists(WINDOWS_HOSTS); // The bad operating system
     while (true) {
         int option;
-        cout << "TelemetryBlocker (MAKE SURE YOU'RE RUNNING AS ADMINISTRATOR)\n\n1. Block Telemetry (Windows)\n2. Block Google Telemetry (Ads & Tracking)\n3. Block Misc Ads & Trackers \n\nChoose an option: ";
+        cout << "TelemetryBlocker\n\n1. Block Telemetry (Windows)\n2. Block Google Telemetry (Ads & Tracking)\n3. Block Misc Ads & Trackers \n\nChoose an option: ";
         cin >> option;
 
         if (!cin)
@@ -53,7 +60,7 @@ int main()
 
         switch (option) {
         case 1:
-            blockMicrosoftTelemetry(isWindows ? WINDOWS_HOSTS : LINUX_HOSTS);
+            blockMicrosoftTelemetry(isWindows ? WINDOWS_HOSTS : LINUX_HOSTS, isWindows);
             break;
         case 2:
             blockGoogleTelemetry(isWindows ? WINDOWS_HOSTS : LINUX_HOSTS);
