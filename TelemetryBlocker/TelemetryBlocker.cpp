@@ -26,24 +26,24 @@ void blockMicrosoftTelemetry(string HOSTS, bool windows)
     if (windows) {
         system("sc config \"DiagTrack\" start=disabled");
         system("sc config \"diagnosticshub.standardcollector.service\" start=disabled");
-        cout << "\nDisabled tracking services";
+        cout << "\nDisabled tracking services" << endl;
     }
 
-    cout << "\nBlocked Windows Telemetry\n\n";
+    cout << "Blocked Windows Telemetry\n" << endl;
 }
 
 void blockGoogleTelemetry(string HOSTS) {
     appendFile(HOSTS, "\n# TelemetryBlocker (Ads & Tracking)\n");
     for (int i = 0; i < GoogleTrackingEndpoints.size(); i++)
         appendFile(HOSTS, "0.0.0.0 " + GoogleTrackingEndpoints[i] + "\n");
-    cout << "\nBlocked Ads & Tracking Telemetry\n\n";
+    cout << "\nBlocked Ads & Tracking Telemetry\n" << endl;
 }
 
 void blockMiscTrackersAndAds(string HOSTS) {
     appendFile(HOSTS, "\n# TelemetryBlocker (Misc Ads & Tracking)\n");
     for (int i = 0; i < MiscAdsAndTrackingEndpoints.size(); i++)
         appendFile(HOSTS, "0.0.0.0 " + MiscAdsAndTrackingEndpoints[i] + "\n");
-    cout << "\nBlocked Misc ads & Trackers\n";
+    cout << "\nBlocked Misc ads & Trackers" << endl;
 }
 
 // Main loop
@@ -69,7 +69,7 @@ int main()
             blockMiscTrackersAndAds(isWindows ? WINDOWS_HOSTS : LINUX_HOSTS);
             break;
         default:
-            cout << "Invalid option.\n\n";
+            cout << "Invalid option.\n" << endl;
             break;
         }
     }
