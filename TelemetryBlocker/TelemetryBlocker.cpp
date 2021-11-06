@@ -52,7 +52,7 @@ int main()
     bool isWindows = filesystem::exists(WINDOWS_HOSTS); // The bad operating system
     while (true) {
         int option;
-        cout << "TelemetryBlocker\n\n1. Block Telemetry (Windows)\n2. Block Google Telemetry (Ads & Tracking)\n3. Block Misc Ads & Trackers \n\nChoose an option: ";
+        cout << "TelemetryBlocker\n\n1. Block Telemetry (Windows)\n2. Block Google Telemetry (Ads & Tracking)\n3. Block Misc Ads & Trackers \n\nChoose an option: " << endl;
         cin >> option;
 
         if (!cin)
