@@ -20,7 +20,7 @@ void appendFile(string file, string toAppend)
 void blockMicrosoftTelemetry(string HOSTS, bool windows)
 {
     appendFile(HOSTS, "\n# TelemetryBlocker (Block Microsoft Telemetry)\n");
-    for (int i = 0; i < MicrosoftTelemetryEndpoints.size(); i++)
+    for (size_t i = 0; i < MicrosoftTelemetryEndpoints.size(); i++)
         appendFile(HOSTS, "0.0.0.0 " + MicrosoftTelemetryEndpoints[i] + "\n");
 
     if (windows) {
@@ -34,14 +34,14 @@ void blockMicrosoftTelemetry(string HOSTS, bool windows)
 
 void blockGoogleTelemetry(string HOSTS) {
     appendFile(HOSTS, "\n# TelemetryBlocker (Ads & Tracking)\n");
-    for (int i = 0; i < GoogleTrackingEndpoints.size(); i++)
+    for (size_t i = 0; i < GoogleTrackingEndpoints.size(); i++)
         appendFile(HOSTS, "0.0.0.0 " + GoogleTrackingEndpoints[i] + "\n");
     cout << "\nBlocked Ads & Tracking Telemetry\n" << endl;
 }
 
 void blockMiscTrackersAndAds(string HOSTS) {
     appendFile(HOSTS, "\n# TelemetryBlocker (Misc Ads & Tracking)\n");
-    for (int i = 0; i < MiscAdsAndTrackingEndpoints.size(); i++)
+    for (size_t i = 0; i < MiscAdsAndTrackingEndpoints.size(); i++)
         appendFile(HOSTS, "0.0.0.0 " + MiscAdsAndTrackingEndpoints[i] + "\n");
     cout << "\nBlocked Misc ads & Trackers" << endl;
 }
