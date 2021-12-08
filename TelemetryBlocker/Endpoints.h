@@ -3,12 +3,42 @@
 #include <string>
 
 std::vector<std::string> MicrosoftTelemetryEndpoints{
+	"choice.microsoft.com",
+	"choice.microsoft.com.nsatc.net",
+	"corp.sts.microsoft.com",
 	"df.telemetry.microsoft.com",
+	"diagnostics.support.microsoft.com",
+	"feedback.microsoft-hohm.com",
+	"feedback.search.microsoft.com",
+	"feedback.windows.com",
 	"g.live.com",
+	"i1.services.social.microsoft.com",
+	"oca.telemetry.microsoft.com",
+	"redir.metaservices.microsoft.com",
+	"reports.wes.df.telemetry.microsoft.com",
+	"settings-sandbox.data.microsoft.com",
 	"settings-win.data.microsoft.com",
+	"services.wes.df.telemetry.microsoft.com",
+	"survey.watson.microsoft.com",
+	"statsfe1.ws.microsoft.com",
+	"statsfe2.ws.microsoft.com",
+	"sqm.df.telemetry.microsoft.com",
+	"sqm.telemetry.microsoft.com",
+	"sqm.telemetry.microsoft.com.nsatc.net",
+	"telecommand.telemetry.microsoft.com",
+	"telemetry.appex.bing.net",
+	"telemetry.microsoft.com",
+	"telemetry.urs.microsoft.com",
 	"umwatson.events.data.microsoft.com",
 	"vortex.data.microsoft.com",
-	"web.vortex.data.microsoft.com"
+	"vortex-sandbox.data.microsoft.com",
+	"vortex-win.data.microsoft.com",
+	"watson.live.com",
+	"watson.microsoft.com",
+	"watson.ppe.telemetry.microsoft.com",
+	"watson.telemetry.microsoft.com",
+	"web.vortex.data.microsoft.com",
+	"wes.df.telemetry.microsoft.com"
 };
 
 std::vector<std::string> GoogleTrackingEndpoints{
