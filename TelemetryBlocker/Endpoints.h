@@ -39,7 +39,6 @@ std::vector<std::string> GoogleTrackingEndpoints{
 	"tpc.googlesyndication.com",
 	"survey.g.doubleclick.net",
 	"static.doubleclick.net",
-	"incoming.telemetry.mozilla.org",
 	"www.google-analytics.com",
 	"www.googletagmanager.com"
 };
@@ -184,7 +183,9 @@ std::vector<std::string> MiscAdsAndTrackingEndpoints{
 	"ics.userreport.com",
 	"id.sharedid.org",
 	"id5-sync.com",
+	"improving.duckduckgo.com",
 	"inapps.appsflyer.com",
+	"incoming.telemetry.mozilla.org",
 	"js-agent.newrelic.com",
 	"js-sec.indexww.com",
 	"js.driftt.com",
